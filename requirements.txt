@@ -5,4 +5,4 @@ plotly
 ipywidgets
 IPython
 pandas
-conda
+
