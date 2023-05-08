@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[18]:
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from IPython.display import display
 import matplotlib.pyplot as plt
 
 
-# In[2]:
+# In[19]:
 
 
 data = pd.read_csv('Engineering Student Count Details (College wise - Branch wise).csv')
@@ -42,7 +42,7 @@ xdata = xdata[condition1 | condition2]
 data = data[~data['College Code'].isin(xdata['College Code'])]
 
 
-# In[3]:
+# In[20]:
 
 
 one_a_data = data.copy()
@@ -54,7 +54,7 @@ print("\033[1mNumber of colleges in zone wise with Total No of students and tota
 one_a_data
 
 
-# In[4]:
+# In[21]:
 
 
 sns.set(style = 'whitegrid')
@@ -74,7 +74,7 @@ for i, bar in enumerate(ax.containers):
 plt.show()
 
 
-# In[5]:
+# In[22]:
 
 
 data.loc[data['branch'].isnull(), 'branch'] = 'Others'
@@ -100,13 +100,13 @@ data.to_csv('my_dataframe.csv', index=False)
 
 
 
-# In[6]:
+# In[23]:
 
 
 one_b_data = data.groupby(['Zone', 'Disciplines']).size().reset_index(name='count')
 
 
-# In[7]:
+# In[24]:
 
 
 pivoted = one_b_data.pivot(index='Zone', columns='Disciplines', values='count').fillna(0)
@@ -126,7 +126,7 @@ for i, patch in enumerate(ax.patches):
 plt.show()
 
 
-# In[8]:
+# In[25]:
 
 
 one_c_data = data.groupby('Zone').agg({'College Name': 'nunique', 'Total No of students': 'sum'})
@@ -149,7 +149,7 @@ print(f"Zone with minimum number of students: {min_students}")
 print(f"Average number of colleges across zones: {avg_colleges}")
 
 
-# In[9]:
+# In[26]:
 
 
 one_d_data = one_c_data['Total No of students'] / one_c_data['College Name']
@@ -168,7 +168,7 @@ for i, bar in enumerate(ax.containers):
 plt.show()
 
 
-# In[10]:
+# In[27]:
 
 
 zones = data['Zone'].unique()
@@ -199,13 +199,13 @@ display(zone_dropdown1)
 display(output1)
 
 
-# In[11]:
+# In[28]:
 
 
 two_b_data = data.groupby(['College Name', 'Zone', 'Disciplines']).agg({'Total No of students':'sum'}).reset_index()
 
 
-# In[12]:
+# In[29]:
 
 
 # pivot the data to create a stacked bar chart
@@ -241,13 +241,13 @@ display(output2)
 
 # 
 
-# In[13]:
+# In[30]:
 
 
 two_c_data = data.groupby(['Zone', 'Disciplines']).agg({'Total No of students':'sum', '1st year':'sum'}).reset_index()
 
 
-# In[14]:
+# In[31]:
 
 
 print("\033[1mTotal number of students and first year students in a discipline by zone\033[0m")
@@ -304,7 +304,7 @@ display(zone_dropdown3)
 display(output3)
 
 
-# In[15]:
+# In[32]:
 
 
 print("\033[1mNumber of students and first year students in a discipline by College wise\033[0m")
