@@ -51,7 +51,7 @@ one_a_data = one_a_data.groupby(['College Code','College Name','Zone','Group','C
 one_a_data = one_a_data.groupby('Zone').agg({'College Code': 'count',  'Total No of students': 'sum', '1st year':'sum'}).reset_index()
 one_a_data = one_a_data.rename(columns={'College Code': 'Number of Colleges'})
 print("\033[1mNumber of colleges in zone wise with Total No of students and total 1st year students\033[0m")
-one_a_data
+#one_a_data
 
 
 # In[21]:
